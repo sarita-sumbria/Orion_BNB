@@ -77,5 +77,7 @@ This class will handle the user data, which will include creating a new user acc
 
 Users will also be allowed to post their Spaces to the site and can rent a space with the same user profile.
 
+.
+
 
 
