@@ -6,7 +6,7 @@ class OrionBNB < Sinatra::Base
   #set :session_secret
 
   get '/' do
-    erb :landing
+     erb :landing
   end
 
   get '/sign-up' do

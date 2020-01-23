@@ -5253,6 +5253,7 @@ small {
 .btn, .btn-large, .btn-small {
   text-decoration: none;
   color: #fff;
+
   background-color: #0d47a1;
   text-align: center;
   letter-spacing: .5px;

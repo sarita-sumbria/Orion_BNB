@@ -17,6 +17,7 @@ class User
       connection = PG.connect(dbname: 'orion_bnb')
     end
     result = connection.exec("INSERT INTO users (username, name, email, password) VALUES('#{params['username']}', '#{params['name']}', '#{params['email']}', '#{params['password']}') ")
+
     #User.new
   end
 
