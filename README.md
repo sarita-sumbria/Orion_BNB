@@ -3,7 +3,7 @@
 This is a challenge undertaken by a team of 5. The goal for the challenge is "Can you, with only a specification to guide you, work as part of a team to build a web app?"
 
 To meet this challenge, after being provided with specs we started by calling a team meeting to discuss how we will approach the challenge
-from a TDD perspective. 
+from a TDD perspective.
 
 The tech stack that will be used for the project is;
 
@@ -12,7 +12,7 @@ The tech stack that will be used for the project is;
 * Postgres via a postgress gem called PG https://rubygems.org/gems/pg/versions/0.18.4
 * RuboCop https://github.com/rubocop-hq/rubocop
 * Rspec for TDD https://rspec.info/
-* Trello 
+* Trello
 
 During the discussion, we came up with an initial feel with what we deemed to be mandatory to include and the items we deemed to be good to have
 but not essential to the goal of an MVP over 2 days.
@@ -39,7 +39,7 @@ Users table
 |2|renter_user|password123|renter@gmail.com| Renter User|
 
 SPACES: Will store the items that owners want to rent out, each space will have an ID, name, price, address, owner and a description.
-The spaces table will reference the Users table for the owner field, for example an owner with a ID of 1 would be linked to the 
+The spaces table will reference the Users table for the owner field, for example an owner with a ID of 1 would be linked to the
 owner column which will be a foreign key.
 
 Spaces Table
@@ -51,7 +51,7 @@ Spaces Table
 
 BOOKING: Will store all the booking information, ID of booking with a primary key, Owner will point to the P/K of the owner of that space
 the renter field will hold the P/K of the user who wants to rent the space. The final field will be true if the owner of the space
-has confirmed the booking otherwise it will be empty (One of the specifications for the challenge requests that multiple people can book a space UNTIL it has 
+has confirmed the booking otherwise it will be empty (One of the specifications for the challenge requests that multiple people can book a space UNTIL it has
 been confirmed by the owner)
 
 Booking Table
@@ -69,15 +69,10 @@ Other considerations not yet covered by the database tables is the time elements
 
 ## Classes
 
-During our discovery session we concluded the we would need several classe to handle the functionality (logic) of our site.
+During our discovery session we concluded the we would need several classes to handle the functionality (logic) of our site.
 
 ### The USER class
 
 This class will handle the user data, which will include creating a new user account, user profile and any booking listings the renter will have booked.
 
 Users will also be allowed to post their Spaces to the site and can rent a space with the same user profile.
-
-.
-
-
-
