@@ -3,7 +3,7 @@ require 'sinatra/base'
 class OrionBNB < Sinatra::Base
 
   get '/' do
-    erb (:index)
+    erb (:landing)
   end
 
 end
