@@ -1,18 +1,36 @@
 require 'sinatra/base'
+require './lib/user'
 
 class OrionBNB < Sinatra::Base
+  enable :sessions
+  #set :session_secret
 
   get '/' do
-    erb (:landing)
+     erb :landing
   end
 
-  get '/sign_up' do
+  get '/sign-up' do
     erb :sign_up
   end
 
+  post '/user-sign-up' do
+    @user = User.create(params)
+    p @user
+    session[:username] = params[:username]
+    redirect '/listings'
+  end
 
-  get '/log_in' do
+  get '/log-in' do
     erb :log_in
+  end
+
+  post '/user-log-in' do
+    session[:id] = User.find(email: params[:email], password: params[:password])
+  end
+
+  get '/user-log-out' do
+    session['id'] = ' '
+    redirect '/'
   end
 
 
@@ -37,8 +55,8 @@ class OrionBNB < Sinatra::Base
   end
 
 
-  get '/addlist' do
-    erb :addlist
+  get '/add-listing' do
+    erb :add_listing
   end
 
 
