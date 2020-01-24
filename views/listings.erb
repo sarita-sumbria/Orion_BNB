@@ -16,18 +16,20 @@
       </ul>
     </div>
   </nav>
+  
+    <h1>Todays Listings</h1>
 
-  <div class="container">
-    <h1>Here are the active listing</h1>
+<blockquote>
     <% spaces.map do | space | %>
-      <div class="space">
-        <p>Space name: <%= space.space_name %></p>
-        <p>Description: <%= space.description %></p>
-        <p>Price PN: <%= space.price_per_night %></p>
-        <p>Owner: <%= space.space_owner %></p>
+      <div>
+        <h6><b>Space Name:</b></h6> <%= space.space_name %>
+        <h6><b>Description:</b></h6><%= space.description %>
+        <h6><b>Price PN:</b></h6><%= space.price_per_night %>
+        <h6><b>Owner:</b></h6><%= space.space_owner %>
       </div>
       <hr>
     <% end %>
-  </div>
+</blockquote>
+
   </body>
 </html>
