@@ -25,37 +25,47 @@ class OrionBNB < Sinatra::Base
   end
 
   post '/user-log-in' do
-    session[:id] = User.find(email: params[:email], password: params[:password])
+    result = User.find(email: params[:email], password: params[:password])
+    session['username'] = result['username']
   end
 
   get '/user-log-out' do
-    session['id'] = ' '
+    session['username'] = nil
     redirect '/'
   end
 
 
-  get '/listings' do
-    erb :listings
+  get '/listings' do 
+    @user = session['username']
+    if @user
+      erb :listings
+    else
+      redirect '/'
+    end
   end
 
 
   get '/profile' do
+    @user = session['username']
     erb :profile
   end
 
 
   get '/inbox' do
+    @user = session['username']
     erb :inbox
 
   end
 
 
   get '/book' do
+    @user = session['username']
     erb :book
   end
 
 
   get '/add-listing' do
+    @user = session['username']
     erb :add_listing
   end
 

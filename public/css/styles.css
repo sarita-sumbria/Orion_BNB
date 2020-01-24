@@ -1,10 +1,15 @@
 
  .nav {
-   color: #0d47a1 !important;
+  color: #0d47a1;
  }
 
  .btn {
-  background-color: #0d47a1 !important;
+  background-color: #0d47a1;
  }
 
- 
+.container {
+  justify-content: center;
+    display: flex;
+    /* align-items: center; */
+    margin-top: 30vh;
+}

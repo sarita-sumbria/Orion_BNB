@@ -1,13 +1,13 @@
 require 'pg'
 
 class User
-  attr_reader :username, :name, :email, :password
+  attr_reader :username, :name, :email
 
-  def initialize(username:, name:, email:, password:)
+  def initialize(username:, name:, email:)
     @username = username
     @name = name
     @email = email
-    @password = password
+  
   end
 
   def self.create(params)
@@ -27,5 +27,11 @@ class User
     else
       connection = PG.connect(dbname: 'orion_bnb')
     end
-    result = connection.exec("SELECT *")
+    result = connection.exec("SELECT * FROM users WHERE username = '#{params['username']}' AND password = '#{params['password']}')")
+    User.new(
+      username: result[0]['username'],
+      name: result[0]['name'],
+      email: result[0]['email']
+    )
+  end
 end
