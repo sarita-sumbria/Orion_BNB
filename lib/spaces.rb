@@ -44,4 +44,4 @@ class Spaces
     connection.exec("DELETE FROM spaces WHERE id = #{id}")
   end
 
-  end
+end
