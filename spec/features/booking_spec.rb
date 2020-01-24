@@ -3,7 +3,7 @@ feature 'Create a booking' do
 
     connection = PG.connect(dbname: 'orion_bnb_test')
 
-    visit '/'
+    visit '/book'
     fill_in 'booked', with 'true'
     click_button 'Submit'
 

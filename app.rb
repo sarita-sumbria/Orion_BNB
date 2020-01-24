@@ -17,7 +17,7 @@ class OrionBNB < Sinatra::Base
     @user = User.create(params)
     p @user
     session[:username] = params[:username]
-    redirect '/listings'
+    redirect '/log-in'
   end
 
   get '/log-in' do
@@ -25,10 +25,11 @@ class OrionBNB < Sinatra::Base
   end
 
   post '/user-log-in' do
-    result = User.find(email: params[:email], password: params[:password])
-    session['username'] = result['username']
+   user = User.find(params)
+    session['username'] = user.username
+   redirect '/listings'
   end
-
+  
   get '/user-log-out' do
     session['username'] = nil
     redirect '/'
