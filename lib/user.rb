@@ -26,7 +26,7 @@ class User
       connection = PG.connect(dbname: 'orion_bnb')
     end
 
-    result = connection.exec("SELECT * FROM users WHERE username = '#{params['username']}' AND password = '#{params['password']}')")
+    result = connection.exec("SELECT * FROM users WHERE username = '#{params['username']}' AND password = '#{params['password']}'")
     User.new(
       username: result[0]['username'],
       name: result[0]['name'],

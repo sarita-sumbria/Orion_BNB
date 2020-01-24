@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <link type="text/css" rel="stylesheet" href="/css/materialize.css"  media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="/css/styles.css"  media="screen,projection"/>
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <link type="text/css" rel="stylesheet" href="/css/styles.css"  media="screen,projection"/>
     <title>Log In</title>
   </head>
   <nav>
@@ -14,14 +15,23 @@
   </div>
 </nav>
   <body>
-<form action="/user-log-in" method="post">
-  <label for="username">Username:
-    <input type="text" name="username"
-    <label/>
-  <label for="password">Password:
-    <input type="password" name="password"
-    <label/>
-    <input type="submit"  value="Login">
-    <form/>
+<h1 style="text-align:center;"> Log In</h1>
+<div class="container" style="align-items: center; margin-top: 8em;">
+    <form class="col s12" style="text-align:center;" action="/user-log-in" method="post">
+    <div class="input-field col s12">
+          <i class="material-icons prefix">fingerprint</i>
+          <input id="username" type="text" required class="validate" name="username">
+          <label class ="active" for="username">Username</label>
+        </div>
+        <div class="input-field col s12">
+          <i class="material-icons prefix">vpn_key</i>
+          <input id="password" type="password" required class="validate" name="password">
+          <label class="active" for="password">Password</label>
+        </div>
+        <input type="submit" value="Log In" class="waves-effect waves-light btn">
+        </form>
+  </div>
+
   </body>
 </html>
+
