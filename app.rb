@@ -27,15 +27,14 @@ class OrionBNB < Sinatra::Base
   post '/user-log-in' do
    user = User.find(params)
    session[:username] = user.username
-   session[:id] = user.id
+   session[:id] = user.id    
    redirect '/listings'
   end
-
+  
   get '/user-log-out' do
-    session['id'] = ' '
+    session['username'] = nil
     redirect '/'
   end
-
 
   get '/listings' do
     erb :listings, :locals => {
@@ -43,19 +42,21 @@ class OrionBNB < Sinatra::Base
     }
   end
 
-
   get '/profile' do
+    @user = session['username']
     erb :profile
   end
 
 
   get '/inbox' do
+    @user = session['username']
     erb :inbox
 
   end
 
 
   get '/book' do
+    @user = session['username']
     erb :book
   end
 
