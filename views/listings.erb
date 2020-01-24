@@ -6,16 +6,28 @@
     <link type="text/css" rel="stylesheet" href="/css/styles.css"  media="screen,projection"/>
     <title>Listings</title>
   </head>
-  <nav>
-  <div class="nav-wrapper navigation">
-    <a href="/" class="brand-logo">OrionBNB</a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-    <li><a href="/profile">Profile</a></li>
-      <li><a href="/user-log-out">Log Out</a></li>
-    </ul>
-  </div>
-</nav>
   <body>
+  <nav>
+    <div class="nav-wrapper navigation">
+      <a href="/" class="brand-logo">OrionBNB</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="/user-log-out">Log Out</a></li>
+      </ul>
+    </div>
+  </nav>
 
+  <div class="container">
+    <h1>Here are the active listing</h1>
+    <% spaces.map do | space | %>
+      <div class="space">
+        <p>Space name: <%= space.space_name %></p>
+        <p>Description: <%= space.description %></p>
+        <p>Price PN: <%= space.price_per_night %></p>
+        <p>Owner: <%= space.space_owner %></p>
+      </div>
+      <hr>
+    <% end %>
+  </div>
   </body>
 </html>

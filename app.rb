@@ -25,7 +25,7 @@ class OrionBNB < Sinatra::Base
   end
 
   post '/user-log-in' do
-   user = User.find(params)
+    p user = User.find(params)
    session[:username] = user.username
    session[:id] = user.id    
    redirect '/listings'
@@ -61,10 +61,12 @@ class OrionBNB < Sinatra::Base
   end
 
 
-  get '/add-listing' do
-    Spaces.create(params,session['id'])
+  post '/add-listing' do
+    Spaces.create(params, session['id'])
     redirect '/listings'
   end
+
+    run! if app_file == $0
 
 
 end

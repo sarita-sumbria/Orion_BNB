@@ -37,7 +37,7 @@ class Spaces
       connection = PG.connect(dbname: 'orion_bnb')
     end
 
-    connection.exec("INSERT INTO spaces (space_name, description, price_per_night) VALUES('#{params['space_name']}', '#{params['description']}', '#{params['price_per_night']}', '#{id}');")
+    connection.exec("INSERT INTO spaces (space_name, description, price_per_night, space_owner) VALUES('#{params['space_name']}', '#{params['description']}', '#{params['price_per_night']}', '#{id}');")
   end
 
 

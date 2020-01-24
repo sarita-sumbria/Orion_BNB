@@ -2,12 +2,13 @@ require 'pg'
 
 class User
 
-  attr_reader :username, :name, :email
+  attr_reader :username, :name, :email, :id
 
-  def initialize(username:, name:, email:)
+  def initialize(username:, name:, email:, id:)
     @username = username
     @name = name
     @email = email
+    @id = id
   end
 
   def self.create(params)
@@ -30,7 +31,14 @@ class User
     User.new(
       username: result[0]['username'],
       name: result[0]['name'],
-      email: result[0]['email']
+      email: result[0]['email'],
+      id: result[0]['id']
     )
   end
+
+  #def self.find(params)
+  #
+  #  user = connection.exec("SELECT * FROM users WHERE username = '#{params['username']}'")
+  #  User.new(username: user[0]['username'], email: user[0]['email'], name: user[0]['name'], id: user[0]['id'])
+  #end
 end
