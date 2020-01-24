@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require './lib/user'
+require './lib/spaces'
 
 class OrionBNB < Sinatra::Base
   enable :sessions
@@ -15,7 +16,6 @@ class OrionBNB < Sinatra::Base
 
   post '/user-sign-up' do
     @user = User.create(params)
-    p @user
     session[:username] = params[:username]
     redirect '/log-in'
   end
@@ -25,7 +25,9 @@ class OrionBNB < Sinatra::Base
   end
 
   post '/user-log-in' do
-   User.find(params)
+   user = User.find(params)
+   session[:username] = user.username
+   session[:id] = user.id
    redirect '/listings'
   end
 
@@ -36,7 +38,9 @@ class OrionBNB < Sinatra::Base
 
 
   get '/listings' do
-    erb :listings
+    erb :listings, :locals => {
+      user: session[:username], spaces: Spaces.find_all_reversed
+    }
   end
 
 
@@ -57,7 +61,8 @@ class OrionBNB < Sinatra::Base
 
 
   get '/add-listing' do
-    erb :add_listing
+    Spaces.create(params,session['id'])
+    redirect '/listings'
   end
 
 
