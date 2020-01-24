@@ -1,3 +1,5 @@
+# Database table for bookings is called 'bookings'
+
 require 'pg'
 
 class Booking
@@ -22,9 +24,9 @@ class Booking
     end
     # some code to say return spaces that are available - 
     # this is done by if 'booked' column is listed as false then this is free so display it
-    result = connection.exec("SELECT * FROM booking_table WHERE booked='false';")
-    result.map do |booking_table|
-      Booking.new(booked: booking_table['booked'])
+    result = connection.exec("SELECT * FROM bookings WHERE booked='false';")
+    result.map do |bookings|
+      Booking.new(booked: bookings['booked'])
     end
   end
 
@@ -37,6 +39,9 @@ class Booking
     end
     # some code to be able to book space -
     # there will be a buttons for the spaces to click on to book it
+
+    # default='flase'
+    result = connection.exec("UPDATE bookings SET booked = NOT booked WHERE id = #{booking:};")
 
   end
 
