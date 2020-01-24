@@ -1,13 +1,15 @@
 class Spaces
 
-  attr_reader :id, :name, :description, :price_per_night
+  attr_reader :spaces_name, :address, :price_per_night, :space_owner
 
-  def initialize(id:, name:, description:, price_per_night:)
-    @id: id
-    @name = name
-    @description = description
+  def initialize(spaces_name:, address:, price_per_night:, space_owner:)
+    @spaces_name = name
+    @address = address
     @price_per_night = price_per_night
+    @space_owner: space_owner
   end
+
+# I am still working on the code. It's not complete yet.
 
   def self.all
     if ENV['ENVIRONMENT'] == 'test'
@@ -16,9 +18,15 @@ class Spaces
       connection = PG.connect(dbname: 'orion_bnb')
     end
 
-    result = connection.exec('SELECT * FROM spaces;')
-    result.map do |space|
-    Spaces.new(id: space['id'], name: space['name'], description: space['description'], price_per_night: space['price_per_night'])
+
+    results = connection.exec("select spaces_name, spaces.price, spaces.address, u.name from spaces inner join users u on spaces.space_owner = u.id;")
+      results.map do |listing|
+        Spaces.new(
+            spaces_name: listing['spaces_name'],
+            price: listing['price'],
+            address: listing['address'],
+            space_owner: listing['name']
+        )
     end
   end
 
